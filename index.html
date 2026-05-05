@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Hướng Nghiệp 4.0</title>
+
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial;
+        background: #0f0c29;
+        color: white;
+        text-align: center;
+      }
+
+      /* Màn hình */
+      .screen {
+        display: none;
+        padding: 40px;
+      }
+      .active {
+        display: block;
+      }
+
+      /* Button */
+      button {
+        padding: 12px 25px;
+        border: none;
+        border-radius: 30px;
+        background: #6c5ce7;
+        color: white;
+        cursor: pointer;
+        margin-top: 20px;
+      }
+
+      /* Card */
+      .card {
+        display: inline-block;
+        padding: 20px;
+        margin: 10px;
+        background: #1f1f3a;
+        border-radius: 20px;
+        cursor: pointer;
+      }
+      .card:hover {
+        background: #6c5ce7;
+      }
+
+      /* Input */
+      textarea,
+      input,
+      select {
+        width: 80%;
+        padding: 10px;
+        margin: 10px;
+        border-radius: 10px;
+        border: none;
+      }
+
+      /* Result */
+      .result {
+        background: white;
+        color: black;
+        padding: 30px;
+        border-radius: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- MÀN 1 -->
+    <div id="screen1" class="screen active">
+      <h1>🤖 AI Hướng Nghiệp</h1>
+      <h2>Chọn khối bạn quan tâm</h2>
+
+      <div class="card" onclick="chon('A')">Khối A<br />Kỹ thuật</div>
+      <div class="card" onclick="chon('B')">Khối B<br />Y học</div>
+      <div class="card" onclick="chon('C')">Khối C<br />Luật</div>
+      <div class="card" onclick="chon('D')">Khối D<br />Sáng tạo</div>
+
+      <div id="cauhoi" style="display: none">
+        <h3 id="noidung"></h3>
+        <textarea id="traloi1"></textarea>
+        <br />
+        <button onclick="sang2()">Tiếp tục</button>
+      </div>
+    </div>
+
+    <!-- MÀN 2 -->
+    <div id="screen2" class="screen">
+      <h2>AI đang phân tích bạn...</h2>
+      <h3>Tại sao bạn chọn ngành này?</h3>
+      <textarea id="traloi2"></textarea>
+      <br />
+      <button onclick="sang3()">Phân tích tương lai</button>
+    </div>
+
+    <!-- MÀN 3 -->
+    <div id="screen3" class="screen">
+      <h2>🔮 Mô phỏng tương lai 2040</h2>
+
+      <input type="text" id="ten" placeholder="Tên của bạn" />
+
+      <select id="nghe">
+        <option value="AI Engineer">Kỹ sư AI</option>
+        <option value="Doctor">Bác sĩ</option>
+        <option value="Designer">Thiết kế</option>
+        <option value="Business">Kinh doanh</option>
+      </select>
+
+      <br />
+      <button onclick="ketqua()">Xem tương lai</button>
+
+      <div id="kq" class="result" style="display: none"></div>
+    </div>
+
+    <script>
+      let major = "";
+
+      const data = {
+        A: "Bạn sẽ trở thành Kỹ sư công nghệ",
+        B: "Bạn sẽ trở thành Bác sĩ",
+        C: "Bạn sẽ trở thành Luật sư",
+        D: "Bạn sẽ trở thành Nhà sáng tạo",
+      };
+
+      function chon(m) {
+        major = m;
+        document.getElementById("cauhoi").style.display = "block";
+        document.getElementById("noidung").innerText =
+          "Bạn sẽ giải quyết vấn đề khó trong lĩnh vực này như thế nào?";
+      }
+
+      function sang2() {
+        document.getElementById("screen1").classList.remove("active");
+        document.getElementById("screen2").classList.add("active");
+      }
+
+      function sang3() {
+        document.getElementById("screen2").classList.remove("active");
+        document.getElementById("screen3").classList.add("active");
+      }
+
+      function ketqua() {
+        let ten = document.getElementById("ten").value;
+        let nghe = document.getElementById("nghe").value;
+
+        if (!ten) return alert("Nhập tên đi!");
+
+        let text = `
+    👤 ${ten} <br><br>
+    🎯 Định hướng: ${data[major]} <br><br>
+    🚀 Nghề tương lai: ${nghe} <br><br>
+    💡 AI đánh giá: Bạn có tiềm năng rất lớn nếu tiếp tục phát triển!
+    `;
+
+        document.getElementById("kq").style.display = "block";
+        document.getElementById("kq").innerHTML = text;
+      }
+    </script>
+  </body>
+</html>
