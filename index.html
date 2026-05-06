@@ -3,159 +3,968 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AI Hướng Nghiệp 4.0</title>
-
+    <title>Hệ Thống Chạy 3 Mã Siêu Dài</title>
     <style>
-      body {
+      body,
+      html {
         margin: 0;
-        font-family: Arial;
-        background: #0f0c29;
-        color: white;
-        text-align: center;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: #000;
       }
-
-      /* Màn hình */
-      .screen {
+      .man-hinh {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
         display: none;
-        padding: 40px;
+        opacity: 0;
+        transition: opacity 0.5s ease;
       }
-      .active {
+      .hien-thi {
         display: block;
+        opacity: 1;
       }
-
-      /* Button */
-      button {
-        padding: 12px 25px;
+      iframe {
+        width: 100%;
+        height: 100%;
         border: none;
-        border-radius: 30px;
-        background: #6c5ce7;
-        color: white;
-        cursor: pointer;
-        margin-top: 20px;
-      }
-
-      /* Card */
-      .card {
-        display: inline-block;
-        padding: 20px;
-        margin: 10px;
-        background: #1f1f3a;
-        border-radius: 20px;
-        cursor: pointer;
-      }
-      .card:hover {
-        background: #6c5ce7;
-      }
-
-      /* Input */
-      textarea,
-      input,
-      select {
-        width: 80%;
-        padding: 10px;
-        margin: 10px;
-        border-radius: 10px;
-        border: none;
-      }
-
-      /* Result */
-      .result {
         background: white;
-        color: black;
-        padding: 30px;
-        border-radius: 20px;
+      }
+      .nut-bam {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 9999;
+        padding: 15px 30px;
+        background: #ff4757;
+        color: white;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        font-weight: bold;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
       }
     </style>
   </head>
   <body>
-    <!-- MÀN 1 -->
-    <div id="screen1" class="screen active">
-      <h1>🤖 AI Hướng Nghiệp</h1>
-      <h2>Chọn khối bạn quan tâm</h2>
-
-      <div class="card" onclick="chon('A')">Khối A<br />Kỹ thuật</div>
-      <div class="card" onclick="chon('B')">Khối B<br />Y học</div>
-      <div class="card" onclick="chon('C')">Khối C<br />Luật</div>
-      <div class="card" onclick="chon('D')">Khối D<br />Sáng tạo</div>
-
-      <div id="cauhoi" style="display: none">
-        <h3 id="noidung"></h3>
-        <textarea id="traloi1"></textarea>
-        <br />
-        <button onclick="sang2()">Tiếp tục</button>
-      </div>
+    <div id="man_1" class="man-hinh hien-thi">
+      <iframe id="iframe_1"></iframe>
+      <button class="nut-bam" onclick="chuyenMan(1, 2)">TIẾP THEO ➜</button>
     </div>
 
-    <!-- MÀN 2 -->
-    <div id="screen2" class="screen">
-      <h2>AI đang phân tích bạn...</h2>
-      <h3>Tại sao bạn chọn ngành này?</h3>
-      <textarea id="traloi2"></textarea>
-      <br />
-      <button onclick="sang3()">Phân tích tương lai</button>
+    <div id="man_2" class="man-hinh">
+      <iframe id="iframe_2"></iframe>
+      <button class="nut-bam" onclick="chuyenMan(2, 3)">TIẾP THEO ➜</button>
     </div>
 
-    <!-- MÀN 3 -->
-    <div id="screen3" class="screen">
-      <h2>🔮 Mô phỏng tương lai 2040</h2>
+    <div id="man_3" class="man-hinh">
+      <iframe id="iframe_3"></iframe>
+      <button
+        class="nut-bam"
+        onclick="location.reload()"
+        style="background: #2ed573"
+      >
+        LÀM LẠI ↺
+      </button>
+    </div>
 
-      <input type="text" id="ten" placeholder="Tên của bạn" />
+    <!-- 
+        HƯỚNG DẪN DÁN: 
+        Dán mã code cực dài của bạn vào giữa thẻ <xmp> và </xmp> 
+        Thẻ <xmp> sẽ giữ nguyên 100% định dạng code của bạn mà không gây lỗi.
+    -->
 
-      <select id="nghe">
-        <option value="AI Engineer">Kỹ sư AI</option>
-        <option value="Doctor">Bác sĩ</option>
-        <option value="Designer">Thiết kế</option>
-        <option value="Business">Kinh doanh</option>
-      </select>
+    <xmp id="source_1" style="display: none">
+     <!doctype html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Career Odyssey - Khám Phá Tương Lai</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        .bg-graph { background-image: radial-gradient(#e2e8f0 1px, transparent 1px); background-size: 24px 24px; }
+        .trait-card.selected { border-color: #4f46e5; background-color: #f5f3ff; box-shadow: 0 0 0 2px #c7d2fe; }
+        .chat-container::-webkit-scrollbar { width: 4px; }
+        .chat-container::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
+        .hidden-page { display: none; }
+    </style>
+</head>
+<body class="min-h-screen bg-graph bg-slate-50">
 
-      <br />
-      <button onclick="ketqua()">Xem tương lai</button>
+    <!-- TRANG 1: NHẬP LIỆU (ID: inputSection) -->
+    <div id="inputSection" class="max-w-3xl mx-auto px-6 py-12">
+        <div class="text-center mb-12">
+            <div class="inline-flex items-center gap-2 bg-white px-6 py-3 rounded-3xl shadow-sm mb-6">
+                <i class="fa-solid fa-sparkles text-indigo-600"></i>
+                <span class="font-semibold text-slate-700">AI Hướng Nghiệp</span>
+            </div>
+            <h1 class="text-5xl font-bold text-slate-900 mb-3 tracking-tight">Career Odyssey</h1>
+            <p class="text-xl text-slate-600">Khám phá con đường sự nghiệp sáng nhất của bạn</p>
+        </div>
 
-      <div id="kq" class="result" style="display: none"></div>
+        <div class="bg-white rounded-3xl shadow-2xl border border-slate-100 p-8 md:p-12">
+            <form id="careerForm">
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-semibold text-slate-600 mb-2">Họ và tên</label>
+                        <div class="relative">
+                            <i class="fa-solid fa-user absolute left-4 top-4 text-slate-400"></i>
+                            <input type="text" id="inputName" required placeholder="Nguyễn Văn An" class="w-full pl-11 pr-4 py-4 border border-slate-200 rounded-2xl focus:border-indigo-500 outline-none" />
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-slate-600 mb-2">Năm sinh</label>
+                        <input type="number" id="inputYear" required min="1995" max="2015" placeholder="2006" class="w-full px-5 py-4 border border-slate-200 rounded-2xl focus:border-indigo-500 outline-none" />
+                    </div>
+                </div>
+
+                <div class="mt-8">
+                    <label class="block text-sm font-semibold text-slate-600 mb-3">Tổ hợp môn thi</label>
+                    <div class="relative" id="searchWrapper">
+                        <input type="text" id="searchInput" placeholder="Tìm khối thi (A00, B00...)" class="w-full px-5 py-4 border border-slate-200 rounded-2xl focus:border-indigo-500 outline-none" />
+                        <ul id="dropdownList" class="hidden absolute z-50 w-full mt-2 bg-white border border-slate-200 rounded-2xl shadow-xl max-h-60 overflow-auto"></ul>
+                    </div>
+                    <div id="selectedBlockDisplay" class="hidden mt-6 p-6 bg-gradient-to-br from-indigo-50 to-violet-50 border border-indigo-100 rounded-2xl flex justify-between items-center">
+                        <div>
+                            <span id="displayCodeInForm" class="text-4xl font-bold text-indigo-700 block"></span>
+                            <span id="displaySubjectsInForm" class="text-slate-600 mt-1"></span>
+                        </div>
+                        <button type="button" onclick="clearSelection()" class="text-red-500 p-3 hover:bg-red-50 rounded-xl"><i class="fa-solid fa-rotate-right"></i></button>
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <label class="block text-sm font-semibold text-slate-600 mb-4">Tính cách nổi bật <span class="text-amber-500">(Chọn 2)</span></label>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="traitsContainer"></div>
+                </div>
+
+                <button type="submit" class="mt-12 w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-6 rounded-3xl font-bold text-lg shadow-xl hover:shadow-2xl transition-all flex items-center justify-center gap-3">
+                    Phân tích ngay <i class="fa-solid fa-wand-magic-sparkles"></i>
+                </button>
+                <p id="errorMsg" class="hidden text-red-500 text-center mt-4 font-medium">Vui lòng điền đủ thông tin và chọn đúng 2 tính cách!</p>
+            </form>
+        </div>
+    </div>
+
+    <!-- TRANG 2: KẾT QUẢ (ID: resultSection) -->
+    <div id="resultSection" class="hidden-page max-w-6xl mx-auto px-6 py-10">
+        <div class="flex items-center gap-4 mb-10">
+            <button onclick="backToInput()" class="bg-white p-4 rounded-2xl shadow-sm hover:shadow-md transition text-indigo-600">
+                <i class="fa-solid fa-arrow-left fa-lg"></i>
+            </button>
+            <div>
+                <h1 class="text-3xl font-bold text-slate-900">Kết Quả Phân Tích</h1>
+                <p class="text-slate-500">Hành trình sự nghiệp dành riêng cho bạn</p>
+            </div>
+        </div>
+
+        <div class="grid lg:grid-cols-12 gap-8">
+            <!-- Sidebar -->
+            <div class="lg:col-span-4 space-y-6">
+                <div class="bg-white rounded-3xl shadow-xl p-8 border border-slate-100">
+                    <div class="flex items-center gap-3 mb-6">
+                        <i class="fa-solid fa-user-graduate text-3xl text-indigo-600"></i>
+                        <div>
+                            <p class="text-sm text-slate-500">Tổ hợp môn</p>
+                            <p id="resBlock" class="text-4xl font-bold text-indigo-700"></p>
+                        </div>
+                    </div>
+                    <h3 class="font-semibold text-slate-700 mb-4 flex items-center gap-2"><i class="fa-solid fa-briefcase"></i> Ngành phù hợp</h3>
+                    <div id="resCareerList" class="space-y-4"></div>
+                </div>
+                <div class="bg-white rounded-3xl shadow-xl p-6 border border-slate-100 text-sm">
+                    <h3 class="font-semibold mb-4 text-slate-700 border-b pb-2">Hồ sơ cá nhân</h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between"><span class="text-slate-500">Họ tên:</span> <span id="resName" class="font-bold"></span></div>
+                        <div class="flex justify-between"><span class="text-slate-500">Tính cách:</span> <span id="resTraits" class="font-medium text-emerald-600 text-right"></span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chat -->
+            <div class="lg:col-span-8">
+                <div class="bg-white rounded-3xl shadow-2xl border border-slate-100 overflow-hidden flex flex-col h-[600px]">
+                    <div id="chatBox" class="flex-1 p-8 space-y-6 overflow-y-auto bg-slate-50/50 chat-container">
+                        <div class="bg-white p-5 rounded-3xl border-l-4 border-indigo-500 shadow-sm max-w-[90%]">
+                            <p class="text-slate-700 font-medium">Phân tích hoàn tất!</p>
+                            <p class="text-slate-500 mt-2 text-sm">Dựa trên dữ liệu, đây là lộ trình tốt nhất cho bạn. Bạn muốn tìm hiểu thêm thông tin gì?</p>
+                        </div>
+                    </div>
+                    <div class="p-6 bg-white border-t grid grid-cols-2 gap-4">
+                        <button onclick="showChatDetail('luong')" class="bg-emerald-500 text-white py-4 rounded-2xl font-bold hover:bg-emerald-600 transition flex items-center justify-center gap-2">💰 Mức Lương</button>
+                        <button onclick="showChatDetail('lydo')" class="bg-violet-600 text-white py-4 rounded-2xl font-bold hover:bg-violet-700 transition flex items-center justify-center gap-2">🔍 Lý Do</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
-      let major = "";
+        // === DỮ LIỆU HỆ THỐNG ===
+        const examBlocks = [
+            { code: "A00", subjects: "Toán, Lý, Hóa", careers: "IT / Phần mềm, Kỹ sư Robot, Kế toán / Kiểm toán" },
+            { code: "B00", subjects: "Toán, Hóa, Sinh", careers: "Bác sĩ, Y tá / Điều dưỡng, Dược sĩ" },
+            { code: "C00", subjects: "Văn, Sử, Địa", careers: "Báo chí, Luật sư, Du lịch" },
+            { code: "D01", subjects: "Toán, Văn, Anh", careers: "Marketing, Designer, Báo chí" }
+        ];
 
-      const data = {
-        A: "Bạn sẽ trở thành Kỹ sư công nghệ",
-        B: "Bạn sẽ trở thành Bác sĩ",
-        C: "Bạn sẽ trở thành Luật sư",
-        D: "Bạn sẽ trở thành Nhà sáng tạo",
+        const careerDetails = {
+            "IT / Phần mềm": { luong: "15 - 50 triệu VNĐ", lydo: "Cần tư duy logic và khả năng giải quyết vấn đề tốt." },
+            "Kỹ sư Robot": { luong: "12 - 60 triệu VNĐ", lydo: "Kết hợp giữa kỹ thuật phần cứng và trí tuệ nhân tạo." },
+            "Kế toán / Kiểm toán": { luong: "10 - 35 triệu VNĐ", lydo: "Cần sự tỉ mỉ và khả năng làm việc với con số." },
+            "Bác sĩ": { luong: "20 - 100 triệu VNĐ", lydo: "Đòi hỏi trách nhiệm cao và sự thấu cảm với bệnh nhân." },
+            "Marketing": { luong: "12 - 45 triệu VNĐ", lydo: "Phát huy khả năng sáng tạo và nắm bắt xu hướng xã hội." },
+            "Luật sư": { luong: "15 - 80 triệu VNĐ", lydo: "Cần tư duy phản biện và khả năng ngôn ngữ sắc bén." },
+            "Designer": { luong: "10 - 40 triệu VNĐ", lydo: "Phù hợp với người có năng khiếu thẩm mỹ và sáng tạo." },
+            "Du lịch": { luong: "8 - 25 triệu VNĐ", lydo: "Yêu thích giao tiếp và khám phá các nền văn hóa mới." }
+        };
+
+        const traitsData = [
+            { id: 'logic', label: 'Logic', icon: 'fa-brain' },
+            { id: 'creative', label: 'Sáng tạo', icon: 'fa-palette' },
+            { id: 'social', label: 'Giao tiếp', icon: 'fa-comments' },
+            { id: 'detail', label: 'Tỉ mỉ', icon: 'fa-microscope' }
+        ];
+
+        let state = { selectedBlock: null, selectedTraits: [], currentCareers: [] };
+
+        // === LOGIC TRANG NHẬP LIỆU ===
+        const traitsContainer = document.getElementById('traitsContainer');
+        traitsData.forEach(t => {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = "trait-card flex flex-col items-center p-4 bg-white border-2 border-slate-100 rounded-2xl transition-all";
+            btn.innerHTML = `<i class="fa-solid ${t.icon} text-2xl mb-2 text-slate-400"></i><span class="text-sm font-medium">${t.label}</span>`;
+            btn.onclick = () => {
+                if (state.selectedTraits.includes(t.id)) {
+                    state.selectedTraits = state.selectedTraits.filter(x => x !== t.id);
+                    btn.classList.remove('selected');
+                } else if (state.selectedTraits.length < 2) {
+                    state.selectedTraits.push(t.id);
+                    btn.classList.add('selected');
+                }
+            };
+            traitsContainer.appendChild(btn);
+        });
+
+        const searchInput = document.getElementById('searchInput');
+        const dropdown = document.getElementById('dropdownList');
+        searchInput.oninput = () => {
+            const val = searchInput.value.toUpperCase();
+            dropdown.innerHTML = '';
+            const filtered = examBlocks.filter(b => b.code.includes(val));
+            if (val && filtered.length) {
+                dropdown.classList.remove('hidden');
+                filtered.forEach(b => {
+                    const li = document.createElement('li');
+                    li.className = 'px-5 py-3 hover:bg-indigo-50 cursor-pointer';
+                    li.innerHTML = `<strong>${b.code}</strong> - ${b.subjects}`;
+                    li.onclick = () => {
+                        state.selectedBlock = b;
+                        document.getElementById('displayCodeInForm').innerText = b.code;
+                        document.getElementById('displaySubjectsInForm').innerText = b.subjects;
+                        document.getElementById('selectedBlockDisplay').classList.remove('hidden');
+                        document.getElementById('searchWrapper').classList.add('hidden');
+                        dropdown.classList.add('hidden');
+                    };
+                    dropdown.appendChild(li);
+                });
+            } else { dropdown.classList.add('hidden'); }
+        };
+
+        function clearSelection() {
+            state.selectedBlock = null;
+            document.getElementById('selectedBlockDisplay').classList.add('hidden');
+            document.getElementById('searchWrapper').classList.remove('hidden');
+            searchInput.value = '';
+        }
+
+        // === CHUYỂN TRANG & HIỂN THỊ KẾT QUẢ ===
+        document.getElementById('careerForm').onsubmit = (e) => {
+            e.preventDefault();
+            if (!state.selectedBlock || state.selectedTraits.length < 2) {
+                document.getElementById('errorMsg').classList.remove('hidden');
+                return;
+            }
+            
+            // Cập nhật dữ liệu hiển thị ở trang kết quả
+            document.getElementById('resName').innerText = document.getElementById('inputName').value;
+            document.getElementById('resBlock').innerText = state.selectedBlock.code;
+            
+            const traitsMap = { logic: "Logic", creative: "Sáng tạo", social: "Giao tiếp", detail: "Tỉ mỉ" };
+            document.getElementById('resTraits').innerText = state.selectedTraits.map(t => traitsMap[t]).join(" • ");
+
+            const careerList = document.getElementById('resCareerList');
+            careerList.innerHTML = '';
+            state.currentCareers = state.selectedBlock.careers.split(',').map(c => c.trim());
+            state.currentCareers.forEach(name => {
+                careerList.innerHTML += `<div class="bg-slate-50 border border-slate-100 p-4 rounded-2xl"><p class="font-bold text-slate-800">${name}</p><p class="text-xs text-indigo-500 mt-1">Độ tương thích: 95%</p></div>`;
+            });
+
+            // Chuyển hiệu ứng trang
+            document.getElementById('inputSection').classList.add('hidden-page');
+            document.getElementById('resultSection').classList.remove('hidden-page');
+            window.scrollTo(0,0);
+        };
+
+        function backToInput() {
+            document.getElementById('resultSection').classList.add('hidden-page');
+            document.getElementById('inputSection').classList.remove('hidden-page');
+        }
+
+        function showChatDetail(type) {
+            const chatBox = document.getElementById('chatBox');
+            const isSalary = type === 'luong';
+            
+            chatBox.innerHTML += `<div class="flex justify-end"><div class="bg-indigo-600 text-white p-4 rounded-3xl rounded-tr-none max-w-[80%] shadow-md">${isSalary ? "Xem mức lương nhé!" : "Tại sao ngành này hợp với mình?"}</div></div>`;
+
+            let html = `<div class="bg-white p-6 rounded-3xl shadow-sm border-l-4 ${isSalary ? 'border-emerald-500' : 'border-violet-500'} max-w-[90%]"><h4 class="font-bold text-indigo-900 mb-3">${isSalary ? "💰 Mức Lương" : "🔍 Phân Tích"}</h4>`;
+            state.currentCareers.forEach(name => {
+                const info = careerDetails[name] || { luong: "Liên hệ", lydo: "Phù hợp năng lực" };
+                html += `<div class="mb-3 border-b border-slate-50 pb-2"><p class="font-bold text-slate-700">${name}</p><p class="text-sm text-slate-600">${isSalary ? info.luong : info.lydo}</p></div>`;
+            });
+            html += `</div>`;
+
+            setTimeout(() => {
+                chatBox.innerHTML += html;
+                chatBox.scrollTo({ top: chatBox.scrollHeight, behavior: 'smooth' });
+            }, 400);
+        }
+    </script>
+</body>
+</html>
+    </xmp>
+
+    <xmp id="source_2" style="display: none">
+      <!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Odyssey - Hệ Thống Định Hướng Nghề Nghiệp 4.0</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* --- CSS INTERFACE: PHONG CÁCH GLASSMORPHISM HIỆN ĐẠI --- */
+        :root {
+            --primary: #6c5ce7;
+            --secondary: #00cec9;
+            --accent: #ff7675;
+            --dark: #0f0c29;
+            --white: #ffffff;
+            --glass: rgba(255, 255, 255, 0.1);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: radial-gradient(circle at top right, #302b63, #0f0c29);
+            color: var(--white);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+        }
+
+        /* Hiệu ứng hạt nền */
+        .bg-particles {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            background-image: radial-gradient(rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+
+        .container {
+            width: 95%;
+            max-width: 1100px;
+            background: var(--glass);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            padding: 50px;
+            border-radius: 40px;
+            border: 1px solid rgba(255,255,255,0.15);
+            box-shadow: 0 40px 100px rgba(0,0,0,0.7);
+            text-align: center;
+            position: relative;
+        }
+
+        .step { display: none; animation: slideUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
+        .active { display: block; }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1, h2 { font-family: 'Playfair Display', serif; }
+        h1 { font-size: 3.5rem; margin-bottom: 10px; background: linear-gradient(to right, #00cec9, #6c5ce7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        h2 { font-size: 2.2rem; margin-bottom: 25px; color: var(--secondary); }
+
+        .tag {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        /* GRID CHỌN KHỐI */
+        .grid-selection {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 35px 20px;
+            border-radius: 25px;
+            border: 1px solid rgba(255,255,255,0.08);
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+
+        .card:hover {
+            background: var(--primary);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(108, 92, 231, 0.4);
+            border-color: transparent;
+        }
+
+        .card h3 { font-size: 1.8rem; margin-bottom: 10px; }
+
+        /* TEXTAREA & INPUT */
+        textarea {
+            width: 100%;
+            height: 150px;
+            background: rgba(255, 255, 255, 0.95);
+            border: none;
+            border-radius: 20px;
+            padding: 20px;
+            font-size: 1.1rem;
+            color: #2d3436;
+            margin: 25px 0;
+            font-family: inherit;
+            resize: none;
+            box-shadow: inset 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .btn {
+            background: linear-gradient(45deg, var(--primary), #a29bfe);
+            color: white;
+            padding: 18px 45px;
+            border: none;
+            border-radius: 100px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            text-transform: uppercase;
+            box-shadow: 0 10px 25px rgba(108, 92, 231, 0.3);
+        }
+
+        .btn:hover { transform: scale(1.05); box-shadow: 0 15px 35px rgba(108, 92, 231, 0.5); }
+
+        /* CHỨNG CHỈ */
+        #cert-wrap {
+            background: white;
+            color: #2d3436;
+            padding: 60px;
+            border: 15px double #6c5ce7;
+            position: relative;
+            margin-top: 20px;
+        }
+
+        #cert-wrap h1 { -webkit-text-fill-color: #2d3436; font-size: 3rem; }
+
+        @media print {
+            body { background: white; }
+            .btn, .tag, h2, p { display: none; }
+            .container { background: none; box-shadow: none; border: none; }
+            #step5 { display: block !important; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-particles"></div>
+
+    <!-- GIAI ĐOẠN 1: THE ARENA -->
+    <div id="step1" class="container step active">
+        <div class="tag">Giai đoạn 1: Năng lực</div>
+        <h1>CAREER ODYSSEY</h1>
+        <h2>THE ARENA: THỬ THÁCH ĐỘC BẢN</h2>
+        <p>Hệ thống AI Mentor đang khởi tạo thử thách. Hãy chọn khối chuyên môn bạn quan tâm:</p>
+        
+        <div class="grid-selection">
+            <div class="card" onclick="startJourney('A')">
+                <h3>KHỐI A</h3>
+                <p>Kỹ thuật & Công nghệ</p>
+            </div>
+            <div class="card" onclick="startJourney('B')">
+                <h3>KHỐI B</h3>
+                <p>Y khoa & Sinh học</p>
+            </div>
+            <div class="card" onclick="startJourney('C')">
+                <h3>KHỐI C</h3>
+                <p>Luật & Giáo dục</p>
+            </div>
+            <div class="card" onclick="startJourney('D')">
+                <h3>KHỐI D</h3>
+                <p>Marketing & Sáng tạo</p>
+            </div>
+        </div>
+
+        <div id="arena-content" style="display:none; margin-top: 40px;">
+            <h3 id="arena-q" style="color: var(--secondary)"></h3>
+            <textarea id="ans1" placeholder="AI Mentor đang lắng nghe giải pháp của bạn..."></textarea>
+            <br>
+            <button class="btn" onclick="goToStep(2)">Tiến vào vòng phỏng vấn</button>
+        </div>
+    </div>
+
+    <!-- GIAI ĐOẠN 2: THE INTERVIEW -->
+    <div id="step2" class="container step">
+        <div class="tag">Giai đoạn 2: Bản lĩnh</div>
+        <h2>THE INTERVIEW: ĐỐI MẶT THỰC TẾ</h2>
+        <h3 id="interview-q" style="min-height: 80px;"></h3>
+        <textarea id="ans2" placeholder="Trả lời bằng sự tự tin và tư duy bản sắc..."></textarea>
+        <br>
+        <button class="btn" onclick="handleInterview()">Tiếp tục thử thách</button>
+    </div>
+
+    <!-- GIAI ĐOẠN 3: SOUL MIRROR -->
+    <div id="step3" class="container step">
+        <div class="tag">Giai đoạn 3: Nội tâm</div>
+        <h2>SOUL MIRROR: THẤU HIỂU BẢN NGÃ</h2>
+        <h3 id="psych-q" style="min-height: 80px;"></h3>
+        <textarea id="ans3" placeholder="Đừng trả lời theo khuôn mẫu, hãy nói thật lòng..."></textarea>
+        <br>
+        <button class="btn" onclick="handlePsych()">Kết nối thực địa</button>
+    </div>
+
+    <!-- GIAI ĐOẠN 4: FIELDWORK -->
+    <div id="step4" class="container step">
+        <div class="tag" style="background: var(--accent)">Giai đoạn 4: Thực địa</div>
+        <h2>FIELDWORK: GIẢI QUYẾT KHỦNG HOẢNG</h2>
+        <p>Dùng kiến thức chuyên môn để xử lý tình huống thực tế sau:</p>
+        <h3 id="field-q" style="color: var(--secondary); margin-top: 20px;"></h3>
+        <textarea id="ans4" placeholder="Kế hoạch hành động chi tiết của bạn là gì?"></textarea>
+        <br>
+        <button class="btn" onclick="handleFieldwork()">Hoàn thành hành trình</button>
+    </div>
+
+    <!-- KẾT THÚC: CHỨNG CHỈ -->
+    <div id="step5" class="container step">
+        <div id="cert-wrap">
+            <h4 style="letter-spacing: 5px; color: #636e72;">CERTIFICATE OF POTENTIAL</h4>
+            <h1>CHIẾN BINH NGHỀ NGHỆP</h1>
+            <p style="font-size: 1.2rem;">Hệ thống Career Odyssey chứng nhận cá nhân đã hoàn thành hành trình trải nghiệm</p>
+            <div style="margin: 40px 0; border-top: 2px solid #2d3436; border-bottom: 2px solid #2d3436; padding: 25px 0;">
+                <p>Lĩnh vực tiềm năng: <strong id="final-major" style="color: #6c5ce7; font-size: 1.5rem;">...</strong></p>
+                <p>Đánh giá năng lực: <strong>XUẤT SẮC - SẴN SÀNG CHINH PHỤC</strong></p>
+            </div>
+            <p><i>Phát triển bởi AI Career Mentor - 2026</i></p>
+        </div>
+        <br>
+        <button class="btn" onclick="window.print()">In hồ sơ năng lực</button>
+        <button class="btn" style="background: #636e72" onclick="location.reload()">Khám phá lại</button>
+    </div>
+
+    <script>
+        /* --- JAVASCRIPT LOGIC: BỘ NÃO CỦA HỆ THỐNG --- */
+        let currentMajor = '';
+        let counters = { interview: 0, psych: 0, field: 0 };
+
+        const database = {
+            A: { 
+                name: "Kỹ thuật & Công nghệ",
+                arena: "Thử thách: Một hệ thống điều khiển giao thông bị mã độc tấn công. Bạn đề xuất một cơ chế bảo mật 'tự chữa lành' như thế nào?",
+                field: [
+                    "Tình huống 1: Robot dây chuyền sản xuất bị lỗi cảm biến đột ngột, bạn xử lý thế nào để không dừng toàn bộ nhà máy?",
+                    "Tình huống 2: Khách hàng muốn một tính năng AI vượt quá khả năng xử lý của phần cứng hiện tại. Bạn đàm phán giải pháp kỹ thuật ra sao?",
+                    "Tình huống 3: Bạn phát hiện một lỗ hổng bảo mật nghiêm trọng trong ứng dụng sắp phát hành. Deadline chỉ còn 2 tiếng. Bạn làm gì?"
+                ]
+            },
+            B: { 
+                name: "Y khoa & Sinh học",
+                arena: "Thử thách: Một bệnh nhân bị dị ứng với tất cả loại thuốc kháng sinh hiện có nhưng cần phẫu thuật gấp. Nêu hướng chẩn đoán của bạn.",
+                field: [
+                    "Tình huống 1: Người nhà bệnh nhân cực kỳ mất bình tĩnh và ngăn cản quy trình cứu chữa. Bạn dùng kỹ năng tâm lý nào?",
+                    "Tình huống 2: Gặp một ca bệnh hiếm gặp mà y văn chưa ghi rõ. Quy trình phối hợp cùng hội đồng chuyên môn của bạn là gì?",
+                    "Tình huống 3: Một bệnh nhân tin vào thuốc dân gian chưa kiểm chứng hơn là phác đồ điều trị. Bạn thuyết phục họ thế nào?"
+                ]
+            },
+            C: { 
+                name: "Luật & Giáo dục",
+                arena: "Thử thách: Đưa ra một lập luận logic để bảo vệ quyền lợi của một người yếu thế trong một vụ tranh chấp đất đai phức tạp.",
+                field: [
+                    "Tình huống 1: Trong phiên tòa, đối phương bất ngờ đưa ra bằng chứng giả rất thuyết phục. Bạn phản biện và xử lý tình huống tại chỗ ra sao?",
+                    "Tình huống 2: Một học sinh tiềm năng bỗng trở nên bất cần và có dấu hiệu bỏ học. Phương pháp giáo dục cá nhân hóa của bạn là gì?",
+                    "Tình huống 3: Bạn phải giảng giải một khái niệm pháp luật trừu tượng cho những người dân chưa từng học qua trường lớp. Bạn làm thế nào?"
+                ]
+            },
+            D: { 
+                name: "Marketing & Sáng tạo",
+                arena: "Thử thách: Thiết kế một thông điệp sáng tạo (Slogan) 5 chữ để bán một sản phẩm 'vô hình' như Niềm Tin hay Sự Kiên Trì.",
+                field: [
+                    "Tình huống 1: Ý tưởng sáng tạo của bạn bị khách hàng bác bỏ vì quá mạo hiểm. Bạn bảo vệ quan điểm hay thay đổi theo ý họ?",
+                    "Tình huống 2: Ngân sách quảng cáo bị cắt giảm 70% nhưng chỉ tiêu doanh số tăng gấp đôi. Chiến lược 'du kích' của bạn là gì?",
+                    "Tình huống 3: Thương hiệu gặp khủng hoảng truyền thông lớn do sai sót của AI. Bạn xử lý khủng hoảng này như thế nào?"
+                ]
+            }
+        };
+
+        const interviewQs = [
+            "Tại sao bạn tin rằng thế giới này cần sự có mặt chuyên môn của bạn?",
+            "Nếu AI có thể làm thay việc của bạn tốt hơn 10 lần, bạn sẽ nâng cấp giá trị con người mình ở điểm gì?",
+            "Mức lương mơ ước sau 5 năm của bạn là bao nhiêu và bạn sẽ tạo ra giá trị tương xứng thế nào?",
+            "Đam mê của bạn là một ngọn lửa cháy rực lúc này hay là một hành trình bền bỉ suốt 40 năm tới?",
+            "Nếu ngày mai ngành này biến mất hoàn toàn, bạn sẽ chuyển đổi kỹ năng của mình sang lĩnh vực nào?"
+        ];
+
+        const psychQs = [
+            "Bạn đang chọn con đường này vì tiếng nói bên trong hay để làm hài lòng kỳ vọng của gia đình?",
+            "Khi gặp thất bại liên tiếp 3 lần trong sự nghiệp, bạn sẽ chọn rẽ hướng hay tiếp tục kiên trì?",
+            "Sự thành công đối với bạn là tiền bạc, danh tiếng hay là sự cống hiến cho cộng đồng?",
+            "Nỗi sợ hãi lớn nhất đang kìm hãm bạn bước tới đam mê thực sự là gì?",
+            "Bạn có sẵn sàng dành 10.000 giờ luyện tập để trở thành chuyên gia trong lĩnh vực này không?"
+        ];
+
+        function startJourney(major) {
+            currentMajor = major;
+            document.querySelector('.grid-selection').style.display = 'none';
+            document.getElementById('arena-content').style.display = 'block';
+            document.getElementById('arena-q').innerText = database[major].arena;
+        }
+
+        function goToStep(s) {
+            document.querySelectorAll('.step').forEach(el => el.classList.remove('active'));
+            document.getElementById('step' + s).classList.add('active');
+            if(s === 2) loadInterview();
+            if(s === 3) loadPsych();
+            if(s === 4) loadField();
+            if(s === 5) document.getElementById('final-major').innerText = database[currentMajor].name;
+        }
+
+        function loadInterview() {
+            document.getElementById('interview-q').innerText = interviewQs[counters.interview];
+            document.getElementById('ans2').value = "";
+        }
+
+        function handleInterview() {
+            if(!document.getElementById('ans2').value.trim()) return alert("AI Mentor cần nghe ý kiến của bạn!");
+            counters.interview++;
+            if(counters.interview < interviewQs.length) loadInterview();
+            else goToStep(3);
+        }
+
+        function loadPsych() {
+            document.getElementById('psych-q').innerText = psychQs[counters.psych];
+            document.getElementById('ans3').value = "";
+        }
+
+        function handlePsych() {
+            if(!document.getElementById('ans3').value.trim()) return alert("Đừng ngần ngại chia sẻ thật lòng!");
+            counters.psych++;
+            if(counters.psych < psychQs.length) loadPsych();
+            else goToStep(4);
+        }
+
+        function loadField() {
+            document.getElementById('field-q').innerText = database[currentMajor].field[counters.field];
+            document.getElementById('ans4').value = "";
+        }
+
+        function handleFieldwork() {
+            if(!document.getElementById('ans4').value.trim()) return alert("Tình huống này cần giải pháp của bạn!");
+            counters.field++;
+            if(counters.field < 3) loadField();
+            else goToStep(5);
+        }
+    </script>
+</body>
+</html>
+     
+    </xmp>
+
+    <xmp id="source_3" style="display: none">
+       <!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE ARENA - Cỗ Máy Thời Gian Hướng Nghiệp</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4ecca3;
+            --secondary: #ff4b2b;
+            --bg: #0b0c10;
+            --card-bg: #1f2833;
+            --text: #c5c6c7;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 500px;
+            padding: 20px;
+        }
+
+        /* Hiệu ứng Glassmorphism */
+        .glass-card {
+            background: rgba(31, 40, 51, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            transition: all 0.5s ease;
+        }
+
+        h1 { color: var(--primary); margin-bottom: 5px; font-size: 28px; text-transform: uppercase; letter-spacing: 2px; }
+        .subtitle { color: #66fcf1; font-size: 14px; margin-bottom: 25px; display: block; }
+
+        /* Form styling */
+        .input-group { text-align: left; margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-size: 13px; color: var(--primary); }
+        input, select {
+            width: 100%;
+            padding: 12px;
+            background: #0b0c10;
+            border: 1px solid #45a29e;
+            border-radius: 10px;
+            color: white;
+            font-size: 16px;
+            outline: none;
+            box-sizing: border-box;
+        }
+
+        .btn-action {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(45deg, var(--primary), #45a29e);
+            border: none;
+            border-radius: 10px;
+            color: #0b0c10;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: 0.3s;
+            text-transform: uppercase;
+        }
+
+        .btn-action:hover { transform: scale(1.02); box-shadow: 0 0 15px var(--primary); }
+
+        /* Result Section */
+        .hidden { display: none; opacity: 0; transform: translateY(20px); }
+        
+        .avatar-container {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 20px;
+            border: 3px solid var(--primary);
+            border-radius: 50%;
+            padding: 5px;
+            background: white;
+        }
+
+        .avatar-container img { width: 100%; height: 100%; border-radius: 50%; }
+
+        .result-name { font-size: 24px; color: white; margin: 10px 0; }
+        .result-title { font-size: 16px; color: var(--secondary); font-weight: bold; margin-bottom: 20px; }
+
+        .diary-content {
+            background: rgba(0,0,0,0.3);
+            padding: 15px;
+            border-radius: 10px;
+            font-style: italic;
+            line-height: 1.6;
+            text-align: left;
+            position: relative;
+            font-family: 'Georgia', serif;
+        }
+
+        .diary-content::before { content: "\f10d"; font-family: "Font Awesome 5 Free"; font-weight: 900; position: absolute; top: -10px; left: 10px; color: var(--primary); font-size: 20px; }
+
+        .reset-link { margin-top: 20px; display: inline-block; color: #45a29e; cursor: pointer; text-decoration: underline; font-size: 14px; }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div id="input-card" class="glass-card">
+        <h1>THE ARENA</h1>
+        <span class="subtitle">Hệ thống mô phỏng tương lai 2040</span>
+
+        <div class="input-group">
+            <label>Họ và tên của bạn:</label>
+            <input type="text" id="name" placeholder="Nhập tên..." autocomplete="off">
+        </div>
+
+        <div class="input-group">
+            <label>Nghề nghiệp bạn muốn hướng tới:</label>
+            <select id="career">
+                <option value="ai">Kỹ sư Trí tuệ nhân tạo (AI)</option>
+                <option value="medical">Bác sĩ Công nghệ cao</option>
+                <option value="art">Nhà thiết kế Game & Đồ họa</option>
+                <option value="business">Chuyên gia Tài chính & Startup</option>
+                <option value="travel">Quản lý Du lịch & Khách sạn</option>
+                <option value="green">Kỹ sư Năng lượng xanh</option>
+            </select>
+        </div>
+
+        <button class="btn-action" onclick="generateFuture()">Kích hoạt cỗ máy thời gian</button>
+    </div>
+
+    <div id="result-card" class="glass-card hidden">
+        <div class="avatar-container">
+            <img id="res-avatar" src="" alt="Avatar">
+        </div>
+        <div class="result-name" id="res-name"></div>
+        <div class="result-title" id="res-title"></div>
+        
+        <div class="diary-content" id="res-diary"></div>
+
+        <div class="reset-link" onclick="goBack()">Làm lại thử thách khác</div>
+    </div>
+</div>
+
+<script>
+    const data = {
+        'ai': {
+            title: 'Chuyên gia AI tại Chu Lai Tech Park',
+            avatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=Tech',
+            diary: 'Năm 2040, hệ thống AI do mình phát triển đã giúp các bạn học sinh Quảng Nam tiếp cận tri thức toàn cầu chỉ bằng giọng nói. Nhìn thế hệ trẻ vươn xa, mình thấy công lao rèn luyện từ thời lớp 11 thật xứng đáng.'
+        },
+        'medical': {
+            title: 'Bác sĩ trưởng khoa Bệnh viện Quốc tế Hội An',
+            avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Doctor',
+            diary: 'Ca phẫu thuật từ xa bằng cánh tay robot hôm nay thành công rực rỡ. Công nghệ y khoa không chỉ là máy móc, mà là sự thấu cảm giúp mình cứu sống nhiều người dân trên khắp dải đất miền Trung.'
+        },
+        'art': {
+            title: 'Giám đốc Sáng tạo Studio Game Quốc tế',
+            avatar: 'https://api.dicebear.com/7.x/adventurer/svg?seed=Art',
+            diary: 'Thế giới ảo (Metaverse) về Phố cổ Hội An của mình vừa đạt 1 tỷ lượt tham quan. Mình tự hào khi mang văn hóa Việt Nam ra thế giới bằng ngôn ngữ đồ họa hiện đại.'
+        },
+        'business': {
+            title: 'Chủ tịch Quỹ đầu tư khởi nghiệp Miền Trung',
+            avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Biz',
+            diary: 'Vừa kết thúc buổi đàm phán triệu đô tại Đà Nẵng. Từ những bài học định hướng đầu tiên tại The Arena, mình đã xây dựng được một hệ sinh thái kinh tế bền vững cho quê hương.'
+        },
+        'travel': {
+            title: 'Tổng quản lý Chuỗi Resort Xanh 5 sao',
+            avatar: 'https://api.dicebear.com/7.x/adventurer/svg?seed=Travel',
+            diary: 'Du lịch xanh là hướng đi mình đã chọn. Hôm nay, khu nghỉ dưỡng của mình được vinh danh là biểu tượng sinh thái của tỉnh, mang lại cuộc sống ấm no cho hàng trăm gia đình địa phương.'
+        },
+        'green': {
+            title: 'Kỹ sư trưởng Dự án Điện gió ngoài khơi',
+            avatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=Green',
+            diary: 'Đứng trước những trụ gió khổng lồ trên biển miền Trung, mình mỉm cười. Nguồn năng lượng sạch này chính là câu trả lời cho biến đổi khí hậu mà mình từng trăn trở khi còn ngồi trên ghế nhà trường.'
+        }
+    };
+
+    function generateFuture() {
+        const userName = document.getElementById('name').value;
+        const careerKey = document.getElementById('career').value;
+
+        if (!userName) {
+            alert("Vui lòng nhập tên của bạn để khởi động cỗ máy!");
+            return;
+        }
+
+        // Đổ dữ liệu vào trang kết quả
+        document.getElementById('res-name').innerText = userName;
+        document.getElementById('res-title').innerText = data[careerKey].title;
+        document.getElementById('res-diary').innerText = data[careerKey].diary;
+        document.getElementById('res-avatar').src = data[careerKey].avatar;
+
+        // Chuyển hiệu ứng card
+        const inputCard = document.getElementById('input-card');
+        const resultCard = document.getElementById('result-card');
+
+        inputCard.style.opacity = '0';
+        inputCard.style.transform = 'scale(0.9)';
+        
+        setTimeout(() => {
+            inputCard.style.display = 'none';
+            resultCard.style.display = 'block';
+            setTimeout(() => {
+                resultCard.style.opacity = '1';
+                resultCard.style.transform = 'translateY(0)';
+            }, 50);
+        }, 500);
+    }
+
+    function goBack() {
+        location.reload(); // Làm mới trang để quay lại từ đầu
+    }
+</script>
+
+</body>
+</html>
+
+      
+    </xmp>
+
+    <script>
+      function loadCode(fId, sId) {
+        const iframe = document.getElementById(fId);
+        const rawCode = document.getElementById(sId).innerHTML;
+        // Chuyển đổi mã sang Blob để chạy độc lập tuyệt đối
+        const blob = new Blob([rawCode], { type: "text/html" });
+        iframe.src = URL.createObjectURL(blob);
+      }
+
+      window.onload = function () {
+        try {
+          loadCode("iframe_1", "source_1");
+          loadCode("iframe_2", "source_2");
+          loadCode("iframe_3", "source_3");
+        } catch (e) {
+          console.error("Lỗi nạp code: ", e);
+        }
       };
 
-      function chon(m) {
-        major = m;
-        document.getElementById("cauhoi").style.display = "block";
-        document.getElementById("noidung").innerText =
-          "Bạn sẽ giải quyết vấn đề khó trong lĩnh vực này như thế nào?";
-      }
-
-      function sang2() {
-        document.getElementById("screen1").classList.remove("active");
-        document.getElementById("screen2").classList.add("active");
-      }
-
-      function sang3() {
-        document.getElementById("screen2").classList.remove("active");
-        document.getElementById("screen3").classList.add("active");
-      }
-
-      function ketqua() {
-        let ten = document.getElementById("ten").value;
-        let nghe = document.getElementById("nghe").value;
-
-        if (!ten) return alert("Nhập tên đi!");
-
-        let text = `
-    👤 ${ten} <br><br>
-    🎯 Định hướng: ${data[major]} <br><br>
-    🚀 Nghề tương lai: ${nghe} <br><br>
-    💡 AI đánh giá: Bạn có tiềm năng rất lớn nếu tiếp tục phát triển!
-    `;
-
-        document.getElementById("kq").style.display = "block";
-        document.getElementById("kq").innerHTML = text;
+      function chuyenMan(di, den) {
+        const mDi = document.getElementById("man_" + di);
+        const mDen = document.getElementById("man_" + den);
+        mDi.style.opacity = "0";
+        setTimeout(() => {
+          mDi.classList.remove("hien-thi");
+          mDen.classList.add("hien-thi");
+          setTimeout(() => {
+            mDen.style.opacity = "1";
+          }, 50);
+        }, 500);
       }
     </script>
   </body>
